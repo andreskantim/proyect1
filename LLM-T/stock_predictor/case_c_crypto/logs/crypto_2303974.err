@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 489, in <module>
+    main(args)
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 53, in main
+    print(f"  Available GPUs: {gpu_info['num_gpus']}")
+                               ~~~~~~~~^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+[W1106 09:18:51.003102601 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+/var/spool/slurmd/job2303974/slurm_script: line 69: ../checkpoints/case_c_crypto/run_2303974/job_info.txt: No such file or directory
+/var/spool/slurmd/job2303974/slurm_script: line 70: ../checkpoints/case_c_crypto/run_2303974/job_info.txt: No such file or directory
+/var/spool/slurmd/job2303974/slurm_script: line 71: ../checkpoints/case_c_crypto/run_2303974/job_info.txt: No such file or directory

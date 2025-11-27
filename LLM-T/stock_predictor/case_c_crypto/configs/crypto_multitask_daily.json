@@ -1,0 +1,50 @@
+{
+  "experiment_name": "case_c_crypto_multitask_daily",
+  "description": "Multi-task prediction: direction + magnitude (2σ Bollinger) across 4 horizons",
+
+  "data": {
+    "start_date": "2019-01-01",
+    "end_date": null,
+    "train_ratio": 0.7,
+    "val_ratio": 0.15,
+    "cache_dir": "data/crypto_multi_cache",
+    "use_cache": true,
+    "interval": "1d",
+    "prediction_mode": "multitask"
+  },
+
+  "tokenizer": {
+    "type": "multitask",
+    "direction_threshold": 0.005,
+    "bollinger_window": 20,
+    "bollinger_std": 2.0,
+    "horizons": [5, 10, 20, 40],
+    "horizon_names": ["1w", "2w", "1m", "2m"]
+  },
+
+  "model": {
+    "type": "multitask_transformer",
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "d_ff": 512,
+    "context_length": 128,
+    "dropout": 0.1,
+    "attention_dropout": 0.1,
+    "n_direction_classes": 3,
+    "n_magnitude_tasks": 4
+  },
+
+  "training": {
+    "epochs": 30,
+    "batch_size": 32,
+    "learning_rate": 3e-4,
+    "weight_decay": 0.1,
+    "grad_clip": 1.0,
+    "early_stopping_patience": 10,
+    "task_weights": {
+      "direction": 1.0,
+      "magnitude": 1.0
+    }
+  }
+}

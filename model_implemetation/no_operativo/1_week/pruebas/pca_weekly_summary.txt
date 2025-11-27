@@ -1,0 +1,18 @@
+PCA Weekly Complexity Analysis
+======================================================================
+
+Configuración:
+  Ventana por sample: 48 horas
+  Features por sample: 240
+  Varianza PCA: 0.95
+
+Resultados:
+  Semanas analizadas: 431
+  Componentes (media): 31.18
+  Componentes (mediana): 31
+  Componentes (std): 6.90
+  Reducción media: 87.0%
+
+Estabilidad:
+  Coef. variación: 0.221
+  Datos recomendados: 18-24 meses

@@ -1,0 +1,144 @@
+slurmstepd: info: Setting TMPDIR to /scratch/2310513. Previous errors about TMPDIR can be discarded
+================================================
+Case C: Crypto Prototype Training
+================================================
+Job ID: 2310513
+Node: a100-33
+GPU: 0,1
+Start time: Thu Nov  6 07:43:25 PM CET 2025
+Working directory: /mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto
+================================================
+
+GPU Information:
+Thu Nov  6 19:43:29 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:17:00.0 Off |                    0 |
+| N/A   47C    P0             66W /  250W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-PCIE-40GB          On  |   00000000:98:00.0 Off |                    0 |
+| N/A   55C    P0             73W /  250W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Starting training...
+Using GPU: NVIDIA A100-PCIE-40GB
+================================================================================
+CASE C: CRYPTO PROTOTYPE TRAINING
+Multi-Asset Model - 20 Cryptocurrencies
+================================================================================
+Start time: 2025-11-06 19:43:39.528788
+Config: configs/crypto_prototype.json
+Output dir: ../checkpoints/case_c_crypto/run_2310513
+Device: cuda
+================================================================================
+
+
+🖥️  GPU Configuration:
+  Available GPUs: 2
+  Using GPUs: 2
+  GPU 0: NVIDIA A100-PCIE-40GB
+    Memory: 0.0GB / 39.5GB
+  GPU 1: NVIDIA A100-PCIE-40GB
+    Memory: 0.0GB / 39.5GB
+
+
+================================================================================
+STEP 1: LOADING CRYPTO DATA
+================================================================================
+
+Loading cached data from data/crypto_multi_cache/crypto_multi_2019-01-01_2025-11-06.pkl
+
+Dataset statistics:
+  Total candles: 45,377
+  Assets: 20
+  Date range: 2499 days
+Data split:
+  Train: 30,938 candles (1750 days)
+  Val:   7,498 candles (375 days)
+  Test:  6,941 candles (375 days)
+
+📊 Data split:
+  Train: 30,938 samples
+  Val:   7,498 samples
+  Test:  6,941 samples
+
+================================================================================
+STEP 2: TOKENIZER
+================================================================================
+
+Fitting OHLC tokenizer...
+  Data shape: (30938, 4)
+  Vocab size: 512
+  Clustering Open returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.100000]
+  Clustering High returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.100000]
+  Clustering Low returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.100000]
+  Clustering Close returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.099999, 0.099999]
+Tokenizer fitted successfully!
+
+Tokenizer saved to ../checkpoints/case_c_crypto/run_2310513/tokenizer.pkl
+Vocabulary statistics:
+  vocab_size: 512
+  n_features: 4
+  total_tokens: 2048
+  Open_center_range: (-0.10000000149011612, 0.09999999403953552)
+  Open_center_mean: 0.0007729526842013001
+  Open_center_std: 0.030376087874174118
+  High_center_range: (-0.10000000894069672, 0.09999954700469971)
+  High_center_mean: 0.038736067712306976
+  High_center_std: 0.030504265800118446
+  Low_center_range: (-0.09999969601631165, 0.10000000894069672)
+  Low_center_mean: -0.038414254784584045
+  Low_center_std: 0.03173922747373581
+  Close_center_range: (-0.09999945759773254, 0.09999939799308777)
+  Close_center_mean: 0.00031338410917669535
+  Close_center_std: 0.05075868219137192
+
+Tokenizing data...
+Creating sequences...
+  Train sequences: 481
+  Val sequences: 115
+  Test sequences: 106
+  Sequence length: 128
+
+🎯 Training configuration:
+  Base batch size: 32
+  Effective batch size: 64 (32 × 2 GPUs)
+  Training batches: 8
+  Validation batches: 2
+  Test batches: 2
+
+================================================================================
+STEP 3: MODEL CREATION
+================================================================================
+
+MarketGPT initialized with 27,152,384 parameters
+
+🔧 Wrapping model for 2 GPUs...
+
+================================================
+Training finished with exit code: 1
+End time: Thu Nov  6 07:44:24 PM CET 2025
+================================================

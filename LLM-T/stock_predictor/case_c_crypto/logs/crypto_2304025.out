@@ -1,0 +1,92 @@
+slurmstepd: info: Setting TMPDIR to /scratch/2304025. Previous errors about TMPDIR can be discarded
+================================================
+Case C: Crypto Prototype Training
+================================================
+Job ID: 2304025
+Node: a100-27
+GPU: 0,1
+Start time: Thu Nov  6 09:21:55 AM CET 2025
+Working directory: /mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto
+================================================
+
+GPU Information:
+Thu Nov  6 09:21:58 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:17:00.0 Off |                    0 |
+| N/A   30C    P0             34W /  250W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-PCIE-40GB          On  |   00000000:98:00.0 Off |                    0 |
+| N/A   36C    P0             34W /  250W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Starting training...
+Using GPU: NVIDIA A100-PCIE-40GB
+================================================================================
+CASE C: CRYPTO PROTOTYPE TRAINING
+Multi-Asset Model - 20 Cryptocurrencies
+================================================================================
+Start time: 2025-11-06 09:22:02.367334
+Config: configs/crypto_prototype.json
+Output dir: ../checkpoints/case_c_crypto/run_2304025
+Device: cuda
+================================================================================
+
+
+🖥️  GPU Configuration:
+  Available GPUs: 2
+  Using GPUs: 2
+  GPU 0: NVIDIA A100-PCIE-40GB
+    Memory: 0.0GB / 39.5GB
+  GPU 1: NVIDIA A100-PCIE-40GB
+    Memory: 0.0GB / 39.5GB
+
+
+================================================================================
+STEP 1: LOADING CRYPTO DATA
+================================================================================
+
+Loading cached data from data/crypto_multi_cache/crypto_multi_2019-01-01_2025-11-06.pkl
+
+Dataset statistics:
+  Total candles: 45,577
+  Assets: 20
+  Date range: 2498 days
+Data split:
+  Train: 31,135 candles (1749 days)
+  Val:   7,498 candles (375 days)
+  Test:  6,944 candles (375 days)
+
+📊 Data split:
+  Train: 31,135 samples
+  Val:   7,498 samples
+  Test:  6,944 samples
+
+================================================================================
+STEP 2: TOKENIZER
+================================================================================
+
+Fitting OHLC tokenizer...
+  Data shape: (31135, 4)
+  Vocab size: 512
+  Clustering Open returns...
+
+================================================
+Training finished with exit code: 1
+End time: Thu Nov  6 09:22:03 AM CET 2025
+================================================

@@ -1,0 +1,262 @@
+slurmstepd: info: Setting TMPDIR to /scratch/2311046. Previous errors about TMPDIR can be discarded
+================================================
+Case C: DIAGNOSTIC TEST on T4 GPU
+================================================
+Job ID: 2311046
+Node: t4-4
+Start time: Thu Nov  6 02:30:54 PM CET 2025
+================================================
+
+Thu Nov  6 14:30:57 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       On  |   00000000:17:00.0 Off |                    0 |
+| N/A   35C    P8             14W /   70W |       1MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Starting diagnostic training (10 epochs, better config)...
+Using GPU: Tesla T4
+================================================================================
+CASE C: CRYPTO PROTOTYPE TRAINING
+Multi-Asset Model - 20 Cryptocurrencies
+================================================================================
+Start time: 2025-11-06 14:31:00.474322
+Config: configs/crypto_t4_diagnostic.json
+Output dir: ../checkpoints/case_c_crypto_diagnostic
+Device: cuda
+================================================================================
+
+
+🖥️  GPU Configuration:
+  Available GPUs: 1
+  Using GPUs: 1
+  GPU 0: Tesla T4
+    Memory: 0.0GB / 14.6GB
+
+
+================================================================================
+STEP 1: LOADING CRYPTO DATA
+================================================================================
+
+Loading cached data from data/crypto_multi_cache/crypto_multi_2019-01-01_2025-11-06.pkl
+
+Dataset statistics:
+  Total candles: 45,377
+  Assets: 20
+  Date range: 2499 days
+Data split:
+  Train: 30,938 candles (1750 days)
+  Val:   7,498 candles (375 days)
+  Test:  6,941 candles (375 days)
+
+📊 Data split:
+  Train: 30,938 samples
+  Val:   7,498 samples
+  Test:  6,941 samples
+
+================================================================================
+STEP 2: TOKENIZER
+================================================================================
+
+Fitting OHLC tokenizer...
+  Data shape: (30938, 4)
+  Vocab size: 512
+  Clustering Open returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.100000]
+  Clustering High returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.100000]
+  Clustering Low returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.100000]
+  Clustering Close returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.099999, 0.100000]
+Tokenizer fitted successfully!
+
+Tokenizer saved to ../checkpoints/case_c_crypto_diagnostic/tokenizer.pkl
+Vocabulary statistics:
+  vocab_size: 512
+  n_features: 4
+  total_tokens: 2048
+  Open_center_range: (-0.10000001639127731, 0.09999999403953552)
+  Open_center_mean: 0.000772952800616622
+  Open_center_std: 0.030376089736819267
+  High_center_range: (-0.10000000894069672, 0.09999951720237732)
+  High_center_mean: 0.03873605653643608
+  High_center_std: 0.0305042527616024
+  Low_center_range: (-0.09999965876340866, 0.10000000894069672)
+  Low_center_mean: -0.03841426596045494
+  Low_center_std: 0.031739238649606705
+  Close_center_range: (-0.09999940544366837, 0.09999950975179672)
+  Close_center_mean: 0.00031337945256382227
+  Close_center_std: 0.05075869709253311
+
+Tokenizing data...
+Creating sequences...
+  Train sequences: 481
+  Val sequences: 115
+  Test sequences: 106
+  Sequence length: 128
+
+🎯 Training configuration:
+  Base batch size: 16
+  Effective batch size: 16 (16 × 1 GPUs)
+  Training batches: 31
+  Validation batches: 8
+  Test batches: 7
+
+================================================================================
+STEP 3: MODEL CREATION
+================================================================================
+
+MarketGPT initialized with 11,998,464 parameters
+Model parameters: 11,998,464
+
+================================================================================
+STEP 4: TRAINING
+================================================================================
+
+
+======================================================================
+Epoch 1/10
+======================================================================
+
+Epoch 1 complete:
+  Train loss: 5.922737
+  Val loss:   5.326464 ✓ BEST
+  Epoch time: 0:00:02
+  ETA: 0:00:25
+
+======================================================================
+Epoch 2/10
+======================================================================
+
+Epoch 2 complete:
+  Train loss: 5.269060
+  Val loss:   5.575119 
+  Epoch time: 0:00:01
+  ETA: 0:00:19
+
+======================================================================
+Epoch 3/10
+======================================================================
+
+Epoch 3 complete:
+  Train loss: 5.165994
+  Val loss:   5.706250 
+  Epoch time: 0:00:01
+  ETA: 0:00:15
+
+======================================================================
+Epoch 4/10
+======================================================================
+
+Epoch 4 complete:
+  Train loss: 5.136129
+  Val loss:   5.853655 
+  Epoch time: 0:00:01
+  ETA: 0:00:12
+
+======================================================================
+Epoch 5/10
+======================================================================
+
+Epoch 5 complete:
+  Train loss: 5.149252
+  Val loss:   5.967340 
+  Epoch time: 0:00:01
+  ETA: 0:00:10
+
+======================================================================
+Epoch 6/10
+======================================================================
+
+Epoch 6 complete:
+  Train loss: 5.132895
+  Val loss:   6.023974 
+  Epoch time: 0:00:01
+  ETA: 0:00:08
+
+======================================================================
+Epoch 7/10
+======================================================================
+
+Epoch 7 complete:
+  Train loss: 5.118298
+  Val loss:   6.241141 
+  Epoch time: 0:00:01
+  ETA: 0:00:06
+
+======================================================================
+Epoch 8/10
+======================================================================
+
+Epoch 8 complete:
+  Train loss: 5.105772
+  Val loss:   6.285723 
+  Epoch time: 0:00:01
+  ETA: 0:00:04
+
+======================================================================
+Epoch 9/10
+======================================================================
+
+Epoch 9 complete:
+  Train loss: 5.045342
+  Val loss:   6.014185 
+  Epoch time: 0:00:01
+  ETA: 0:00:02
+
+======================================================================
+Epoch 10/10
+======================================================================
+
+Epoch 10 complete:
+  Train loss: 5.036591
+  Val loss:   6.400532 
+  Epoch time: 0:00:01
+  ETA: 0:00:00
+
+================================================================================
+STEP 5: FINAL EVALUATION ON TEST SET
+================================================================================
+
+Loading best model...
+Evaluating on test set...
+
+📊 Test Set Results:
+  Test Loss: 5.392796
+  Test Accuracy: 17.69%
+  Test Samples: 106
+
+================================================================================
+TRAINING COMPLETE!
+================================================================================
+Best validation loss: 5.326464
+Final test loss: 5.392796
+Final test accuracy: 17.69%
+Model saved to: ../checkpoints/case_c_crypto_diagnostic/best_model.pt
+Tokenizer saved to: ../checkpoints/case_c_crypto_diagnostic/tokenizer.pkl
+================================================================================
+
+
+================================================
+Diagnostic training finished: exit code 0
+End time: Thu Nov  6 02:32:06 PM CET 2025
+================================================

@@ -1,0 +1,416 @@
+slurmstepd: info: Setting TMPDIR to /scratch/2311562. Previous errors about TMPDIR can be discarded
+================================================
+Case C: MULTI-TASK TEST on T4 GPU
+================================================
+Job ID: 2311562
+Node: t4-6
+Start time: Thu Nov  6 03:13:50 PM CET 2025
+================================================
+
+Thu Nov  6 15:13:53 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       On  |   00000000:17:00.0 Off |                    0 |
+| N/A   32C    P8             13W /   70W |       1MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Starting multi-task training test (daily data)...
+================================================================================
+CASE C: CRYPTO MULTI-TASK TRAINING
+Direction + Magnitude Prediction (2σ Bollinger)
+================================================================================
+Start time: 2025-11-06 15:13:56.216774
+Config: configs/crypto_multitask_daily.json
+Output dir: ../checkpoints/case_c_multitask_daily_test
+Device: cuda
+================================================================================
+
+🖥️  GPU Configuration:
+  Available GPUs: 1
+  GPU 0: Tesla T4
+
+================================================================================
+STEP 1: LOADING CRYPTO DATA
+================================================================================
+
+Loading cached data from data/crypto_multi_cache/crypto_multi_2019-01-01_2025-11-06.pkl
+
+Dataset statistics:
+  Total candles: 45,377
+  Assets: 20
+  Date range: 2499 days
+Data split:
+  Train: 31,763 candles
+  Val:   6,806 candles
+  Test:  6,808 candles
+
+================================================================================
+STEP 2: MULTI-TASK TOKENIZER
+================================================================================
+
+
+MultiTaskTokenizer initialized:
+  Direction prediction:
+    UP:   close_change > +0.50%
+    FLAT: -0.50% <= close_change <= +0.50%
+    DOWN: close_change < -0.50%
+
+  Magnitude prediction (2σ Bollinger):
+    Bollinger window: 20 periods
+    Bollinger std: 2.0σ
+    Horizons: 5d (1w), 10d (2w), 20d (1m), 40d (2m)
+
+Tokenizing data...
+
+Training data statistics:
+  Direction:
+    DOWN: 41.0%
+    FLAT: 16.7%
+    UP: 42.4%
+  Magnitude (2σ Bollinger):
+    1w: 40.0% significant
+    2w: 57.5% significant
+    1m: 76.1% significant
+    2m: 89.0% significant
+
+Creating sequences...
+  Train sequences: 31,635
+  Val sequences:   6,678
+  Test sequences:  6,680
+  Sequence length: 128
+
+Tokenizer saved to ../checkpoints/case_c_multitask_daily_test/tokenizer.pkl
+
+🎯 Training configuration:
+  Batch size: 32
+  Training batches: 989
+  Validation batches: 209
+  Test batches: 209
+
+================================================================================
+STEP 3: MODEL CREATION
+================================================================================
+
+Model parameters: 810,695
+Sequences per parameter: 0.04
+
+================================================================================
+STEP 4: TRAINING
+================================================================================
+
+
+======================================================================
+Epoch 1/30
+======================================================================
+
+Epoch 1 complete:
+  Train loss: 129.0546 (dir: 91.5001, mag: 37.5545)
+  Val loss:   1.5067 (dir: 0.9619, mag: 0.5448)
+
+  Train accuracies:
+    Direction: 39.77%
+    Magnitude: 65.37% (1w: 55.2%, 2w: 52.6%, 1m: 70.4%, 2m: 83.3%)
+
+  Val accuracies:
+    Direction: 44.82%
+    Magnitude: 72.52% (1w: 57.8%, 2w: 60.9%, 1m: 79.4%, 2m: 92.0%)
+  ✓ BEST - Model saved to ../checkpoints/case_c_multitask_daily_test/best_model.pt
+
+======================================================================
+Epoch 2/30
+======================================================================
+
+Epoch 2 complete:
+  Train loss: 1.7981 (dir: 1.1727, mag: 0.6254)
+  Val loss:   1.5257 (dir: 0.9817, mag: 0.5440)
+
+  Train accuracies:
+    Direction: 41.68%
+    Magnitude: 70.50% (1w: 59.6%, 2w: 57.4%, 1m: 76.1%, 2m: 89.0%)
+
+  Val accuracies:
+    Direction: 44.79%
+    Magnitude: 72.52% (1w: 57.8%, 2w: 60.9%, 1m: 79.4%, 2m: 92.0%)
+  No improvement (1/10)
+
+======================================================================
+Epoch 3/30
+======================================================================
+
+Epoch 3 complete:
+  Train loss: 1.6456 (dir: 1.0606, mag: 0.5850)
+  Val loss:   1.5038 (dir: 0.9655, mag: 0.5383)
+
+  Train accuracies:
+    Direction: 41.32%
+    Magnitude: 70.65% (1w: 60.0%, 2w: 57.5%, 1m: 76.1%, 2m: 89.0%)
+
+  Val accuracies:
+    Direction: 44.79%
+    Magnitude: 72.52% (1w: 57.8%, 2w: 60.9%, 1m: 79.4%, 2m: 92.0%)
+  ✓ BEST - Model saved to ../checkpoints/case_c_multitask_daily_test/best_model.pt
+
+======================================================================
+Epoch 4/30
+======================================================================
+
+Epoch 4 complete:
+  Train loss: 1.6312 (dir: 1.0475, mag: 0.5836)
+  Val loss:   1.5013 (dir: 0.9610, mag: 0.5403)
+
+  Train accuracies:
+    Direction: 41.25%
+    Magnitude: 70.62% (1w: 60.0%, 2w: 57.4%, 1m: 76.1%, 2m: 89.0%)
+
+  Val accuracies:
+    Direction: 44.86%
+    Magnitude: 72.52% (1w: 57.8%, 2w: 60.9%, 1m: 79.4%, 2m: 92.0%)
+  ✓ BEST - Model saved to ../checkpoints/case_c_multitask_daily_test/best_model.pt
+
+======================================================================
+Epoch 5/30
+======================================================================
+
+Epoch 5 complete:
+  Train loss: 1.6089 (dir: 1.0293, mag: 0.5797)
+  Val loss:   1.4993 (dir: 0.9621, mag: 0.5372)
+
+  Train accuracies:
+    Direction: 42.19%
+    Magnitude: 70.62% (1w: 60.0%, 2w: 57.5%, 1m: 76.1%, 2m: 88.9%)
+
+  Val accuracies:
+    Direction: 44.86%
+    Magnitude: 72.48% (1w: 57.6%, 2w: 60.9%, 1m: 79.4%, 2m: 92.0%)
+  ✓ BEST - Model saved to ../checkpoints/case_c_multitask_daily_test/best_model.pt
+
+======================================================================
+Epoch 6/30
+======================================================================
+
+Epoch 6 complete:
+  Train loss: 1.6045 (dir: 1.0283, mag: 0.5762)
+  Val loss:   1.4888 (dir: 0.9543, mag: 0.5345)
+
+  Train accuracies:
+    Direction: 42.23%
+    Magnitude: 70.61% (1w: 60.0%, 2w: 57.5%, 1m: 76.1%, 2m: 88.9%)
+
+  Val accuracies:
+    Direction: 44.86%
+    Magnitude: 72.52% (1w: 57.8%, 2w: 60.9%, 1m: 79.4%, 2m: 92.0%)
+  ✓ BEST - Model saved to ../checkpoints/case_c_multitask_daily_test/best_model.pt
+
+======================================================================
+Epoch 7/30
+======================================================================
+
+Epoch 7 complete:
+  Train loss: 1.5986 (dir: 1.0263, mag: 0.5723)
+  Val loss:   1.4926 (dir: 0.9559, mag: 0.5368)
+
+  Train accuracies:
+    Direction: 42.16%
+    Magnitude: 70.68% (1w: 59.9%, 2w: 57.6%, 1m: 76.2%, 2m: 89.0%)
+
+  Val accuracies:
+    Direction: 44.86%
+    Magnitude: 72.67% (1w: 57.8%, 2w: 61.1%, 1m: 79.6%, 2m: 92.1%)
+  No improvement (1/10)
+
+======================================================================
+Epoch 8/30
+======================================================================
+
+Epoch 8 complete:
+  Train loss: 1.6363 (dir: 1.0560, mag: 0.5803)
+  Val loss:   1.5002 (dir: 0.9628, mag: 0.5374)
+
+  Train accuracies:
+    Direction: 42.23%
+    Magnitude: 70.79% (1w: 60.0%, 2w: 57.8%, 1m: 76.3%, 2m: 89.1%)
+
+  Val accuracies:
+    Direction: 44.86%
+    Magnitude: 72.62% (1w: 57.8%, 2w: 61.1%, 1m: 79.6%, 2m: 92.0%)
+  No improvement (2/10)
+
+======================================================================
+Epoch 9/30
+======================================================================
+
+Epoch 9 complete:
+  Train loss: 1.5923 (dir: 1.0224, mag: 0.5699)
+  Val loss:   1.4950 (dir: 0.9612, mag: 0.5338)
+
+  Train accuracies:
+    Direction: 42.27%
+    Magnitude: 70.84% (1w: 60.0%, 2w: 57.8%, 1m: 76.4%, 2m: 89.2%)
+
+  Val accuracies:
+    Direction: 44.95%
+    Magnitude: 72.67% (1w: 57.8%, 2w: 61.1%, 1m: 79.6%, 2m: 92.1%)
+  No improvement (3/10)
+
+======================================================================
+Epoch 10/30
+======================================================================
+
+Epoch 10 complete:
+  Train loss: 1.5869 (dir: 1.0234, mag: 0.5635)
+  Val loss:   1.5009 (dir: 0.9652, mag: 0.5357)
+
+  Train accuracies:
+    Direction: 42.53%
+    Magnitude: 70.86% (1w: 60.0%, 2w: 57.9%, 1m: 76.3%, 2m: 89.2%)
+
+  Val accuracies:
+    Direction: 44.86%
+    Magnitude: 72.67% (1w: 57.8%, 2w: 61.1%, 1m: 79.6%, 2m: 92.2%)
+  No improvement (4/10)
+
+======================================================================
+Epoch 11/30
+======================================================================
+
+Epoch 11 complete:
+  Train loss: 1.5832 (dir: 1.0204, mag: 0.5627)
+  Val loss:   1.4913 (dir: 0.9560, mag: 0.5353)
+
+  Train accuracies:
+    Direction: 42.24%
+    Magnitude: 70.85% (1w: 60.0%, 2w: 57.8%, 1m: 76.4%, 2m: 89.2%)
+
+  Val accuracies:
+    Direction: 44.89%
+    Magnitude: 72.69% (1w: 57.8%, 2w: 61.2%, 1m: 79.6%, 2m: 92.2%)
+  No improvement (5/10)
+
+======================================================================
+Epoch 12/30
+======================================================================
+
+Epoch 12 complete:
+  Train loss: 1.5831 (dir: 1.0221, mag: 0.5610)
+  Val loss:   1.4963 (dir: 0.9623, mag: 0.5340)
+
+  Train accuracies:
+    Direction: 42.34%
+    Magnitude: 70.90% (1w: 60.0%, 2w: 58.0%, 1m: 76.4%, 2m: 89.2%)
+
+  Val accuracies:
+    Direction: 44.86%
+    Magnitude: 72.69% (1w: 57.8%, 2w: 61.2%, 1m: 79.6%, 2m: 92.2%)
+  No improvement (6/10)
+
+======================================================================
+Epoch 13/30
+======================================================================
+
+Epoch 13 complete:
+  Train loss: 1.5975 (dir: 1.0378, mag: 0.5597)
+  Val loss:   1.4922 (dir: 0.9583, mag: 0.5339)
+
+  Train accuracies:
+    Direction: 42.16%
+    Magnitude: 70.93% (1w: 60.0%, 2w: 58.0%, 1m: 76.5%, 2m: 89.3%)
+
+  Val accuracies:
+    Direction: 45.07%
+    Magnitude: 72.68% (1w: 57.8%, 2w: 61.1%, 1m: 79.6%, 2m: 92.2%)
+  No improvement (7/10)
+
+======================================================================
+Epoch 14/30
+======================================================================
+
+Epoch 14 complete:
+  Train loss: 1.5793 (dir: 1.0203, mag: 0.5590)
+  Val loss:   1.4937 (dir: 0.9607, mag: 0.5330)
+
+  Train accuracies:
+    Direction: 42.45%
+    Magnitude: 70.97% (1w: 60.0%, 2w: 58.1%, 1m: 76.5%, 2m: 89.3%)
+
+  Val accuracies:
+    Direction: 45.49%
+    Magnitude: 72.68% (1w: 57.8%, 2w: 61.2%, 1m: 79.6%, 2m: 92.1%)
+  No improvement (8/10)
+
+======================================================================
+Epoch 15/30
+======================================================================
+
+Epoch 15 complete:
+  Train loss: 1.5821 (dir: 1.0239, mag: 0.5583)
+  Val loss:   1.4923 (dir: 0.9585, mag: 0.5338)
+
+  Train accuracies:
+    Direction: 42.66%
+    Magnitude: 70.98% (1w: 60.0%, 2w: 58.1%, 1m: 76.5%, 2m: 89.3%)
+
+  Val accuracies:
+    Direction: 44.95%
+    Magnitude: 72.66% (1w: 57.8%, 2w: 61.1%, 1m: 79.6%, 2m: 92.2%)
+  No improvement (9/10)
+
+======================================================================
+Epoch 16/30
+======================================================================
+
+Epoch 16 complete:
+  Train loss: 1.6153 (dir: 1.0564, mag: 0.5589)
+  Val loss:   1.4892 (dir: 0.9576, mag: 0.5317)
+
+  Train accuracies:
+    Direction: 42.33%
+    Magnitude: 70.97% (1w: 60.0%, 2w: 58.1%, 1m: 76.5%, 2m: 89.3%)
+
+  Val accuracies:
+    Direction: 44.95%
+    Magnitude: 72.68% (1w: 57.8%, 2w: 61.1%, 1m: 79.7%, 2m: 92.2%)
+  No improvement (10/10)
+
+  Early stopping triggered!
+
+================================================================================
+STEP 5: FINAL EVALUATION ON TEST SET
+================================================================================
+
+📊 Test Set Results:
+  Test Loss: 1.5741
+  Direction Accuracy: 40.51%
+  Magnitude Accuracies:
+    1w: 61.41%
+    2w: 56.18%
+    1m: 74.00%
+    2m: 87.51%
+    Average: 69.78%
+
+================================================================================
+TRAINING COMPLETE!
+================================================================================
+Best validation loss: 1.4888
+Final test loss: 1.5741
+Model saved to: ../checkpoints/case_c_multitask_daily_test/best_model.pt
+Tokenizer saved to: ../checkpoints/case_c_multitask_daily_test/tokenizer.pkl
+================================================================================
+
+================================================
+Multi-task training test finished: exit code 0
+End time: Thu Nov  6 03:18:28 PM CET 2025
+================================================

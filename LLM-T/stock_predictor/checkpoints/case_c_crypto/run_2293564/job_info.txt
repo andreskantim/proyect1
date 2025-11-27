@@ -1,0 +1,3 @@
+Job ID: 2293564
+Node: a100-20
+Exit code: 1

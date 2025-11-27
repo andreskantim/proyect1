@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files (can be large)
+data/raw/*.csv
+data/processed/*.csv
+data/raw/*.parquet
+data/processed/*.parquet
+
+# Results and models (can be large)
+results/
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+
+# Logs
+logs/
+*.log
+*.out
+*.err
+
+# SLURM
+slurm-*.out
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride

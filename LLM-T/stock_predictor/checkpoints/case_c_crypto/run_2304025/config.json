@@ -1,0 +1,33 @@
+{
+  "experiment_name": "case_c_crypto_prototype",
+  "description": "Prototype: 20 cryptocurrencies, daily candles, ~5 years",
+  "data": {
+    "start_date": "2019-01-01",
+    "end_date": null,
+    "train_ratio": 0.7,
+    "val_ratio": 0.15,
+    "cache_dir": "data/crypto_multi_cache",
+    "use_cache": true
+  },
+  "tokenizer": {
+    "vocab_size": 512,
+    "n_features": 4
+  },
+  "model": {
+    "n_layers": 8,
+    "d_model": 512,
+    "n_heads": 8,
+    "d_ff": 2048,
+    "context_length": 256,
+    "n_steps_pred": 5,
+    "dropout": 0.1,
+    "attention_dropout": 0.1
+  },
+  "training": {
+    "epochs": 30,
+    "batch_size": 32,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.1,
+    "grad_clip": 1.0
+  }
+}

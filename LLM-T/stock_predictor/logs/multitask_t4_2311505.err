@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_multitask.py", line 458, in <module>
+    main()
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_multitask.py", line 222, in main
+    loader = CryptoMultiAssetLoader(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: CryptoMultiAssetLoader.__init__() got an unexpected keyword argument 'start_date'

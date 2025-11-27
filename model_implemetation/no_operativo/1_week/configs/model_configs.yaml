@@ -1,0 +1,189 @@
+# Model Configuration File
+# Bitcoin Price Prediction - 1 Week Model
+
+# ============================================================================
+# Data Configuration
+# ============================================================================
+data:
+  # Expected columns in CSV: timestamp, open, high, low, close, volume
+  required_columns:
+    - open
+    - high
+    - low
+    - close
+    - volume
+
+  # Time windows
+  lookback_hours: 168  # 7 days
+  lookahead_hours: 24  # 1 day
+
+  # Gap between datasets (to prevent overlap/future leak)
+  # Required gap per Masters (2018): min(lookback, lookahead) - 1 = 23 hours
+  gap_days: 1  # 1 day (24h) is sufficient and avoids losing too much data
+
+# ============================================================================
+# Model Hyperparameter Grids
+# ============================================================================
+models:
+  svr_gaussian:
+    kernel: rbf  # Gaussian kernel
+    param_grid:
+      C: [0.1, 1, 10, 100]
+      gamma: ['scale', 'auto', 0.001, 0.01]
+      epsilon: [0.01, 0.1, 0.5]
+    cache_size: 1000
+
+  random_forest:
+    param_grid:
+      n_estimators: [100, 200, 500]
+      max_depth: [10, 20, null]  # null = None in Python
+      min_samples_split: [2, 5, 10]
+      min_samples_leaf: [1, 2, 4]
+      max_features: ['sqrt', 'log2']
+    n_jobs: -1
+    random_state: 42
+
+  gradient_boosting:
+    param_grid:
+      n_estimators: [100, 200, 500]
+      learning_rate: [0.01, 0.05, 0.1]
+      max_depth: [3, 5, 7]
+      subsample: [0.8, 1.0]
+      min_samples_split: [2, 5]
+      min_samples_leaf: [1, 2]
+    random_state: 42
+
+  mlp:
+    param_grid:
+      hidden_layer_sizes: [[100], [100, 50], [200, 100, 50]]
+      activation: ['relu', 'tanh']
+      alpha: [0.0001, 0.001, 0.01]
+      learning_rate_init: [0.001, 0.01]
+      max_iter: [500]
+      early_stopping: [true]
+      validation_fraction: [0.1]
+    random_state: 42
+
+# ============================================================================
+# Feature Engineering
+# ============================================================================
+features:
+  # Scaler type: 'standard', 'robust', or null
+  scaler: 'robust'  # Robust scaler better for Bitcoin (has outliers)
+
+  # Technical indicators to compute
+  indicators:
+    rsi:
+      enabled: true
+      periods: [7, 14]
+
+    macd:
+      enabled: true
+      fast: 12
+      slow: 26
+      signal: 9
+
+    bollinger_bands:
+      enabled: true
+      period: 20
+      std_dev: 2.0
+
+    moving_averages:
+      enabled: true
+      periods: [7, 14, 30, 50]
+      types: ['sma', 'ema']
+
+    atr:
+      enabled: true
+      period: 14
+
+    volume_indicators:
+      enabled: true
+
+    temporal_features:
+      enabled: true
+      # Cyclical encoding for hour, day of week, day of month
+
+# ============================================================================
+# Training Configuration
+# ============================================================================
+training:
+  # Walk-forward parameters
+  walk_forward:
+    step_size: 24  # Move forward 24 hours (1 day) each iteration
+    verbose: 1
+
+  # Parallel processing
+  n_jobs: -1  # Use all available cores
+
+  # Performance metric for model selection
+  selection_metric: 'mse'  # Mean Squared Error
+
+  # Save intermediate results every N days
+  save_interval: 30
+
+# ============================================================================
+# Evaluation Configuration
+# ============================================================================
+evaluation:
+  # Metrics to compute
+  metrics:
+    - mse
+    - rmse
+    - mae
+    - r_squared
+    - spearman
+    - directional_accuracy
+    - success_ratio
+    - profit_factor
+
+  # Stratification for consistency
+  stratification:
+    enabled: true
+    n_strata: 12  # Monthly strata for 1 year
+
+  # Confidence intervals
+  confidence_intervals:
+    enabled: true
+    confidence_level: 0.90
+    pessimistic_confidence: 0.99
+
+# ============================================================================
+# Output Configuration
+# ============================================================================
+output:
+  # Base directory for results
+  base_dir: '../results'
+
+  # Save predictions
+  save_predictions: true
+
+  # Save trained models
+  save_models: true
+
+  # Formats: 'json', 'pickle', 'csv'
+  formats:
+    - json
+    - pickle
+
+# ============================================================================
+# SLURM Configuration
+# ============================================================================
+slurm:
+  # Job parameters
+  cpus_per_task: 64
+  memory: '64G'
+  time_limit: '72:00:00'
+  partition: 'normal'
+
+  # Notifications
+  mail_type: 'BEGIN,END,FAIL'
+  mail_user: 'your.email@domain.com'
+
+# ============================================================================
+# Logging
+# ============================================================================
+logging:
+  level: 'INFO'
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  save_to_file: true

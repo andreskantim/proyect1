@@ -1,0 +1,33 @@
+cesga/2020 unloaded
+        Preparing the environment for use of the CESGA 2020 software stack.
+        Please rebuild modules cache: module --ignore-cache avail
+     
+cesga/2020 loaded
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) cesga/2020
+Lmod has detected the following error: The following module(s) are unknown:
+"cuda/11.8"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "cuda/11.8"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+Downloading cryptos:   0%|          | 0/20 [00:00<?, ?it/s]Downloading cryptos:   5%|▌         | 1/20 [00:01<00:28,  1.49s/it]Downloading cryptos:  10%|█         | 2/20 [00:01<00:14,  1.26it/s]Downloading cryptos:  15%|█▌        | 3/20 [00:02<00:09,  1.75it/s]Downloading cryptos:  20%|██        | 4/20 [00:02<00:07,  2.20it/s]Downloading cryptos:  25%|██▌       | 5/20 [00:02<00:05,  2.63it/s]Downloading cryptos:  30%|███       | 6/20 [00:02<00:04,  2.99it/s]Downloading cryptos:  35%|███▌      | 7/20 [00:03<00:03,  3.33it/s]Downloading cryptos:  40%|████      | 8/20 [00:03<00:03,  3.57it/s]Downloading cryptos:  45%|████▌     | 9/20 [00:03<00:03,  3.51it/s]Downloading cryptos:  50%|█████     | 10/20 [00:03<00:02,  3.43it/s]Downloading cryptos:  55%|█████▌    | 11/20 [00:04<00:02,  3.64it/s]Downloading cryptos:  60%|██████    | 12/20 [00:04<00:02,  3.95it/s]Downloading cryptos:  65%|██████▌   | 13/20 [00:04<00:01,  3.88it/s]Downloading cryptos:  70%|███████   | 14/20 [00:04<00:01,  4.07it/s]Downloading cryptos:  75%|███████▌  | 15/20 [00:05<00:01,  4.10it/s]Downloading cryptos:  80%|████████  | 16/20 [00:05<00:01,  3.91it/s]Downloading cryptos:  85%|████████▌ | 17/20 [00:05<00:00,  3.81it/s]Downloading cryptos:  90%|█████████ | 18/20 [00:05<00:00,  3.64it/s]Downloading cryptos:  95%|█████████▌| 19/20 [00:06<00:00,  3.76it/s]Downloading cryptos: 100%|██████████| 20/20 [00:06<00:00,  3.98it/s]Downloading cryptos: 100%|██████████| 20/20 [00:06<00:00,  3.11it/s]
+Traceback (most recent call last):
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 365, in <module>
+    main(args)
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 79, in main
+    train_df, val_df, test_df = loader.split_train_val_test(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/crypto_data_loader.py", line 203, in split_train_val_test
+    timestamps.sort()
+    ^^^^^^^^^^^^^^^
+AttributeError: 'DatetimeArray' object has no attribute 'sort'
+[W1106 01:58:42.257236763 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

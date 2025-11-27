@@ -1,0 +1,3 @@
+Job ID: 2304025
+Node: a100-27
+Exit code: 1

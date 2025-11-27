@@ -1,0 +1,56 @@
+slurmstepd: info: Setting TMPDIR to /scratch/2303974. Previous errors about TMPDIR can be discarded
+================================================
+Case C: Crypto Prototype Training
+================================================
+Job ID: 2303974
+Node: a100-27
+GPU: 0,1
+Start time: Thu Nov  6 09:18:36 AM CET 2025
+Working directory: /mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto
+================================================
+
+GPU Information:
+Thu Nov  6 09:18:40 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:17:00.0 Off |                    0 |
+| N/A   31C    P0             34W /  250W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-PCIE-40GB          On  |   00000000:98:00.0 Off |                    0 |
+| N/A   35C    P0             34W /  250W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Starting training...
+Using GPU: NVIDIA A100-PCIE-40GB
+================================================================================
+CASE C: CRYPTO PROTOTYPE TRAINING
+Multi-Asset Model - 20 Cryptocurrencies
+================================================================================
+Start time: 2025-11-06 09:18:51.338897
+Config: configs/crypto_prototype.json
+Output dir: ../checkpoints/case_c_crypto/run_2303974
+Device: cuda
+================================================================================
+
+
+🖥️  GPU Configuration:
+
+================================================
+Training finished with exit code: 1
+End time: Thu Nov  6 09:18:54 AM CET 2025
+================================================

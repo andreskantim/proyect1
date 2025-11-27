@@ -1,0 +1,96 @@
+slurmstepd: info: Setting TMPDIR to /scratch/2293564. Previous errors about TMPDIR can be discarded
+================================================
+Case C: Crypto Prototype Training
+================================================
+Job ID: 2293564
+Node: a100-20
+GPU: 0
+Start time: Thu Nov  6 01:58:14 AM CET 2025
+================================================
+
+GPU Information:
+Thu Nov  6 01:58:25 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:17:00.0 Off |                    0 |
+| N/A   41C    P0             63W /  250W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Starting training...
+Using GPU: NVIDIA A100-PCIE-40GB
+================================================================================
+CASE C: CRYPTO PROTOTYPE TRAINING
+Multi-Asset Model - 20 Cryptocurrencies
+================================================================================
+Start time: 2025-11-06 01:58:35.370923
+Config: configs/crypto_prototype.json
+Output dir: ../checkpoints/case_c_crypto/run_2293564
+Device: cuda
+================================================================================
+
+
+================================================================================
+STEP 1: LOADING CRYPTO DATA
+================================================================================
+
+
+======================================================================
+Downloading 20 Cryptocurrencies (Daily Candles)
+Period: 2019-01-01 to 2025-11-06
+======================================================================
+
+  ✓ BTC-USD: 2499 days
+  ✓ ETH-USD: 2499 days
+  ✓ BNB-USD: 2499 days
+  ✓ XRP-USD: 2499 days
+  ✓ ADA-USD: 2499 days
+  ✓ DOGE-USD: 2499 days
+  ✓ SOL-USD: 2034 days
+  ✓ TRX-USD: 2499 days
+  ✓ DOT-USD: 1902 days
+  ✓ MATIC-USD: 2158 days
+  ✓ LTC-USD: 2499 days
+  ✓ SHIB-USD: 1880 days
+  ✓ AVAX-USD: 1871 days
+  ✓ UNI-USD: 2006 days
+  ✓ LINK-USD: 2499 days
+  ✓ ATOM-USD: 2427 days
+  ✓ XLM-USD: 2499 days
+  ✓ BCH-USD: 2499 days
+  ✓ FIL-USD: 2499 days
+  ✓ APT-USD: 1311 days
+
+======================================================================
+Download Complete!
+  Total assets: 20
+  Total candles: 45,577
+  Date range: 2019-01-01 00:00:00+00:00 to 2025-11-03 00:00:00+00:00
+  Assets with data: 20
+======================================================================
+
+Cached to: data/crypto_multi_cache/crypto_multi_2019-01-01_2025-11-06.pkl
+
+
+Dataset statistics:
+  Total candles: 45,577
+  Assets: 20
+  Date range: 2498 days
+
+================================================
+Training finished with exit code: 1
+End time: Thu Nov  6 01:58:44 AM CET 2025
+================================================

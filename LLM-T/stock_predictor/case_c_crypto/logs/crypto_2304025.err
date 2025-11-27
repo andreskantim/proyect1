@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 489, in <module>
+    main(args)
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 143, in main
+    tokenizer.fit(train_ohlc)
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/common/tokenizer.py", line 77, in fit
+    self.clusterers[i].fit(feature_returns)
+  File "/mnt/netapp2/Store_uni/home/ulc/cursos/curso396/miniconda3/envs/llm-training/lib/python3.11/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/netapp2/Store_uni/home/ulc/cursos/curso396/miniconda3/envs/llm-training/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py", line 1454, in fit
+    X = validate_data(
+        ^^^^^^^^^^^^^^
+  File "/mnt/netapp2/Store_uni/home/ulc/cursos/curso396/miniconda3/envs/llm-training/lib/python3.11/site-packages/sklearn/utils/validation.py", line 2954, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/netapp2/Store_uni/home/ulc/cursos/curso396/miniconda3/envs/llm-training/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1105, in check_array
+    _assert_all_finite(
+  File "/mnt/netapp2/Store_uni/home/ulc/cursos/curso396/miniconda3/envs/llm-training/lib/python3.11/site-packages/sklearn/utils/validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/mnt/netapp2/Store_uni/home/ulc/cursos/curso396/miniconda3/envs/llm-training/lib/python3.11/site-packages/sklearn/utils/validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+KMeans does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+[W1106 09:22:02.015083248 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

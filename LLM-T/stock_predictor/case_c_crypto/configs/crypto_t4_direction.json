@@ -1,0 +1,42 @@
+{
+  "experiment_name": "case_c_crypto_direction_prediction",
+  "description": "Predict DIRECTION only (up/down/flat) instead of exact OHLC values",
+
+  "data": {
+    "start_date": "2019-01-01",
+    "end_date": null,
+    "train_ratio": 0.7,
+    "val_ratio": 0.15,
+    "cache_dir": "data/crypto_multi_cache",
+    "use_cache": true,
+    "interval": "1d",
+    "prediction_target": "direction",
+    "direction_threshold": 0.005
+  },
+
+  "tokenizer": {
+    "type": "direction",
+    "vocab_size": 3,
+    "n_features": 1,
+    "classes": ["down", "flat", "up"]
+  },
+
+  "model": {
+    "n_layers": 6,
+    "d_model": 256,
+    "n_heads": 8,
+    "d_ff": 1024,
+    "context_length": 256,
+    "n_steps_pred": 1,
+    "dropout": 0.1,
+    "attention_dropout": 0.1
+  },
+
+  "training": {
+    "epochs": 20,
+    "batch_size": 32,
+    "learning_rate": 3e-4,
+    "weight_decay": 0.1,
+    "grad_clip": 1.0
+  }
+}

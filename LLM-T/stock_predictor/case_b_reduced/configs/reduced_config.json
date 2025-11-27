@@ -1,0 +1,38 @@
+{
+  "experiment_name": "case_b_reduced_100assets",
+  "description": "Case B: 100 assets across 4 markets (US, Crypto, Commodities, EM)",
+
+  "data": {
+    "start_date": "2014-01-01",
+    "train_ratio": 0.7,
+    "val_ratio": 0.15
+  },
+
+  "model": {
+    "vocab_size": 1024,
+    "n_layers": 10,
+    "d_model": 640,
+    "n_heads": 10,
+    "d_ff": 2560,
+    "context_length": 384,
+    "dropout": 0.1,
+    "n_features": 4,
+    "n_steps_pred": 5
+  },
+
+  "training": {
+    "epochs": 40,
+    "batch_size": 24,
+    "learning_rate": 2e-4,
+    "weight_decay": 0.01,
+    "scheduler_t0": 5,
+    "num_workers": 8,
+    "gradient_accumulation_steps": 1
+  },
+
+  "hardware": {
+    "num_gpus": 2,
+    "mixed_precision": true,
+    "gradient_checkpointing": true
+  }
+}

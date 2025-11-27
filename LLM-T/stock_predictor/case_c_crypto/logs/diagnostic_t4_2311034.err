@@ -1,0 +1,3 @@
+Traceback (most recent call last):
+  File "<stdin>", line 44, in <module>
+AttributeError: 'CryptoMultiAssetLoader' object has no attribute 'download_crypto_data'

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 501, in <module>
+    main(args)
+  File "/mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto/train_crypto.py", line 261, in main
+    model = MultiGPUWrapper(model, num_gpus=num_gpus)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MultiGPUWrapper.__init__() got an unexpected keyword argument 'num_gpus'
+[W1106 19:44:22.251174646 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

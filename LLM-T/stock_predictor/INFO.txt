@@ -1,0 +1,44 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                      MARKETGPT TRADING SYSTEM                        ║
+║                                                                      ║
+║  Sistema de trading con IA basado en transformers para predicción   ║
+║  de mercados financieros y generación de señales de compra          ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+🚀 INICIO RÁPIDO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. PRIMERA VEZ:
+   → Lee:  START_HERE.md
+
+2. CADA SESIÓN CON CLAUDE:
+   → Ejecuta:  /context  (o  /ctx)
+
+3. REFERENCIA RÁPIDA:
+   → Lee:  QUICK_REFERENCE.md
+
+4. DETALLES TÉCNICOS:
+   → Lee:  SYSTEM_ARCHITECTURE.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTACIÓN PRINCIPAL:
+
+START_HERE.md             ← Empieza aquí
+CLAUDE_CONTEXT.md         ← Contexto para Claude (cargado por /context)
+SYSTEM_ARCHITECTURE.md    ← Arquitectura completa (3 fases)
+QUICK_REFERENCE.md        ← Referencia rápida
+TRAINING_GUIDE.md         ← Guía de entrenamiento multi-GPU
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 ARQUITECTURA:
+
+FASE 1: Pre-entrenamiento    → Cases A, B, C (COMPLETADO ✓)
+FASE 2: Fine-tuning          → Por mercado (PENDIENTE)
+FASE 3: Generación Señales   → 3 condiciones (PENDIENTE)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Versión: 2.0
+Fecha: 2025-01-06

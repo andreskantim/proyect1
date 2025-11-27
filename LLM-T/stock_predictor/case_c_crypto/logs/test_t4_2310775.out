@@ -1,0 +1,184 @@
+slurmstepd: info: Setting TMPDIR to /scratch/2310775. Previous errors about TMPDIR can be discarded
+================================================
+Case C: Crypto Test on T4 GPU
+================================================
+Job ID: 2310775
+Node: t4-10
+GPU: 0
+Start time: Thu Nov  6 02:19:38 PM CET 2025
+Working directory: /mnt/netapp2/Home_FT2/home/ulc/cursos/curso396/LLM-T/stock_predictor/case_c_crypto
+================================================
+
+GPU Information:
+Thu Nov  6 14:19:42 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       On  |   00000000:98:00.0 Off |                    0 |
+| N/A   38C    P8             15W /   70W |       1MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Starting test training on T4...
+Using GPU: Tesla T4
+================================================================================
+CASE C: CRYPTO PROTOTYPE TRAINING
+Multi-Asset Model - 20 Cryptocurrencies
+================================================================================
+Start time: 2025-11-06 14:19:52.065650
+Config: configs/crypto_t4_test.json
+Output dir: ../checkpoints/case_c_crypto_t4_test
+Device: cuda
+================================================================================
+
+
+🖥️  GPU Configuration:
+  Available GPUs: 1
+  Using GPUs: 1
+  GPU 0: Tesla T4
+    Memory: 0.0GB / 14.6GB
+
+
+================================================================================
+STEP 1: LOADING CRYPTO DATA
+================================================================================
+
+
+======================================================================
+Downloading 20 Cryptocurrencies (Daily Candles)
+Period: 2019-01-01 to 2025-11-06
+======================================================================
+
+  ✓ BTC-USD: 2500 days
+  ✓ ETH-USD: 2500 days
+  ✓ BNB-USD: 2500 days
+  ✓ XRP-USD: 2500 days
+  ✓ ADA-USD: 2500 days
+  ✓ DOGE-USD: 2500 days
+  ✓ SOL-USD: 2035 days
+  ✓ TRX-USD: 2500 days
+  ✓ DOT-USD: 1903 days
+  ✓ MATIC-USD: 2158 days
+  ✓ LTC-USD: 2500 days
+  ✓ SHIB-USD: 1881 days
+  ✓ AVAX-USD: 1872 days
+  ✓ UNI-USD: 2006 days
+  ✓ LINK-USD: 2500 days
+  ✓ ATOM-USD: 2428 days
+  ✓ XLM-USD: 2500 days
+  ✓ BCH-USD: 2500 days
+  ✓ FIL-USD: 2500 days
+  ✓ APT-USD: 1311 days
+
+⚠️  Dropped 217 rows with NaN values (0.48%)
+
+======================================================================
+Download Complete!
+  Total assets: 20
+  Total candles: 45,377
+  Date range: 2019-01-01 00:00:00+00:00 to 2025-11-04 00:00:00+00:00
+  Assets with data: 20
+======================================================================
+
+Cached to: data/crypto_multi_cache/crypto_multi_2019-01-01_2025-11-06.pkl
+
+
+Dataset statistics:
+  Total candles: 45,377
+  Assets: 20
+  Date range: 2499 days
+Data split:
+  Train: 30,938 candles (1750 days)
+  Val:   7,498 candles (375 days)
+  Test:  6,941 candles (375 days)
+
+📊 Data split:
+  Train: 30,938 samples
+  Val:   7,498 samples
+  Test:  6,941 samples
+
+================================================================================
+STEP 2: TOKENIZER
+================================================================================
+
+Fitting OHLC tokenizer...
+  Data shape: (30938, 4)
+  Vocab size: 256
+  Clustering Open returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.099988]
+  Clustering High returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.100000, 0.099999]
+  Clustering Low returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.099999, 0.100000]
+  Clustering Close returns...
+    Return range: [-0.100000, 0.100000]
+    Cluster centers range: [-0.099994, 0.099997]
+Tokenizer fitted successfully!
+
+Tokenizer saved to ../checkpoints/case_c_crypto_t4_test/tokenizer.pkl
+Vocabulary statistics:
+  vocab_size: 256
+  n_features: 4
+  total_tokens: 1024
+  Open_center_range: (-0.10000000149011612, 0.09998776018619537)
+  Open_center_mean: 0.0011894721537828445
+  Open_center_std: 0.03508632257580757
+  High_center_range: (-0.10000000894069672, 0.09999948740005493)
+  High_center_mean: 0.03822293132543564
+  High_center_std: 0.03236442059278488
+  Low_center_range: (-0.09999940544366837, 0.10000002384185791)
+  Low_center_mean: -0.0366937518119812
+  Low_center_std: 0.03376803174614906
+  Close_center_range: (-0.09999378770589828, 0.09999726712703705)
+  Close_center_mean: -0.0005440969252958894
+  Close_center_std: 0.05091223865747452
+
+Tokenizing data...
+Creating sequences...
+  Train sequences: 964
+  Val sequences: 232
+  Test sequences: 214
+  Sequence length: 64
+
+🎯 Training configuration:
+  Base batch size: 8
+  Effective batch size: 8 (8 × 1 GPUs)
+  Training batches: 121
+  Validation batches: 29
+  Test batches: 27
+
+================================================================================
+STEP 3: MODEL CREATION
+================================================================================
+
+MarketGPT initialized with 3,666,944 parameters
+Model parameters: 3,666,944
+
+================================================================================
+STEP 4: TRAINING
+================================================================================
+
+
+======================================================================
+Epoch 1/3
+======================================================================
+
+================================================
+Training finished with exit code: 1
+End time: Thu Nov  6 02:20:32 PM CET 2025
+================================================

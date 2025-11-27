@@ -1,0 +1,80 @@
+# Claude Code configuration
+.claude/
+.claude.json
+.claude.json.backup
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Data files (grandes archivos de datos)
+stock_predictor/data/*.csv
+stock_predictor/data/*.json
+
+# Model files (modelos entrenados pueden ser grandes)
+stock_predictor/models/*.pth
+stock_predictor/models/*.pkl
+
+# Log files
+stock_predictor/logs/*.png
+stock_predictor/logs/*.jpg
+stock_predictor/logs/*.log
+stock_predictor/logs/*.txt
+
+# Mantener las carpetas pero no su contenido
+!stock_predictor/data/.gitkeep
+!stock_predictor/models/.gitkeep
+!stock_predictor/logs/.gitkeep
+
+# PyTorch
+*.pt
+*.pth.tar
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Cache
+.cache/
+*.cache
